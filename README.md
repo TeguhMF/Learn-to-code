@@ -1,2 +1,3 @@
-# gabut
-website pengacakan untuk menentukan kelompok
+teguhMF
+hi my name teguh maulana firmansyah
+welcome the my github
