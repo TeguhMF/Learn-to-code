@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login & Sign Up</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background: url('https://4kwallpapers.com/images/walls/thumbs_3t/17436.jpg') no-repeat center center/cover;
+        }
+        .container {
+            background: rgba(255, 255, 255, 0.181);
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+            text-align: center;
+            width: 300px;
+        }
+        .form-box {
+            display: flex;
+            flex-direction: column;
+        }
+        .hidden {
+            display: none;
+        }
+        input {
+            margin: 10px 0;
+            padding: 10px;
+            border: 1px solid rgba(255, 255, 255, 0.555);
+            border-radius: 5px;
+            background: rgba(255, 255, 255, 0.552);
+            color: rgb(0, 0, 0);
+        }
+        button {
+            background: #4d00c0;
+            color: rgb(255, 255, 255);
+            border: none;
+            padding: 10px;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        button:hover {
+            background: #4d00c0;
+        }
+        a {
+            color: #4d00c0;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="form-box" id="loginBox">
+            <h2>Login</h2>
+            <input type="email" id="loginEmail" placeholder="Email">
+            <input type="password" id="loginPassword" placeholder="Password">
+            <button onclick="login()">Login</button>
+            <p>Belum punya akun? <a onclick="showSignUp()">Sign Up</a></p>
+        </div>
+        
+        <div class="form-box hidden" id="signUpBox">
+            <h2>Sign Up</h2>
+            <input type="text" id="signUpName" placeholder="Nama Lengkap">
+            <input type="email" id="signUpEmail" placeholder="Email">
+            <input type="password" id="signUpPassword" placeholder="Password">
+            <button onclick="signUp()">Sign Up</button>
+            <p>Sudah punya akun? <a onclick="showLogin()">Login</a></p>
+        </div>
+    </div>
+    
+    <script>
+        function showSignUp() {
+            document.getElementById('loginBox').classList.add('hidden');
+            document.getElementById('signUpBox').classList.remove('hidden');
+        }
+
+        function showLogin() {
+            document.getElementById('signUpBox').classList.add('hidden');
+            document.getElementById('loginBox').classList.remove('hidden');
+        }
+
+        function login() {
+            alert("Login berhasil!");
+        }
+
+        function signUp() {
+            alert("Sign Up berhasil!");
+        }
+    </script>
+</body>
+</html>
