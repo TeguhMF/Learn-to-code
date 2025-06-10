@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vika Travel - Paket Wisata Terbaik</title>
+    <link rel="stylesheet" href="travel.css">
+</head>
+<body>
+    <header>
+        <div class="logo">
+            <h1>Pedia Travel</h1>
+            <p>Jelajahi Dunia Bersama Kami</p>
+        </div>
+        
+        <nav>
+            <ul>
+                <li><a href="#home">Home</a></li>
+                <li><a href="#about">About Us</a></li>
+                <li><a href="#gallery">Gallery</a></li>
+                <li><a href="#contact">Contact Us</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <section id="home" class="hero">
+            <h2>Selamat Datang di Pedia Travel</h2>
+            <p>Kami menyediakan paket wisata terbaik dengan harga kompetitif!</p>
+            <p>Special offer: Dapatkan <strong>diskon 20%</strong> untuk pemesanan pertama!</p>
+        </section>
+
+        
+        <section id="about" class="about">
+            <h2>Tentang Kami</h2>
+            <p>Pedia Travel adalah mitra perjalanan terpercaya Anda untuk menjelajahi berbagai destinasi dengan nyaman, aman, dan terjangkau. Berdiri dengan semangat memberikan pelayanan terbaik, Vika Travel hadir untuk memenuhi kebutuhan transportasi, wisata, hingga perjalanan pribadi maupun kelompok.
+                Kami memahami bahwa setiap perjalanan adalah pengalaman yang berharga. Oleh karena itu, kami berkomitmen untuk memberikan layanan profesional, armada yang terawat, serta tim yang ramah dan berpengalaman. dan telah melayani lebih dari <em>10.000</em> pelanggan.</p>
+            <h3>Visi & Misi:</h3>
+            <ul>
+                <li>Memberikan pengalaman wisata terbaik</li>
+                <li>Harga terjangkau dengan kualitas premium</li>
+                <li>Pelayanan 24/7 untuk kenyamanan Anda</li>
+            </ul>
+
+            <div class="team">
+                <h3>Tim Kami:</h3>
+                <table>
+                    <tr>
+                        <th>Nama</th>
+                        <th>Posisi</th>
+                        <th>Pengalaman</th>
+                    </tr>
+                    <tr>
+                        <td>Adit</td>
+                        <td>OWNER</td>
+                        <td>5 tahun</td>
+                    </tr>
+                    <tr>
+                        <td>Denis</td>
+                        <td>Tour Guide</td>
+                        <td>5 tahun</td>
+                    </tr>
+                </table>
+            </div>
+        </section>
+
+        <section id="gallery" class="gallery">
+            <h2>Gallery Wisata</h2>
+            <div class="media-container">
+                <div class="media-item">
+                    <img src="https://www.topijelajah.com/wp-content/uploads/2018/04/Ikonik-Bali-1.jpg" alt="Destinasi Bali">
+                    <p>Pantai Kuta, Bali</p>
+                </div>
+                <div class="media-item">
+                    <img src="https://melampa.com/wp-content/uploads/2019/01/Gili-Trawangan-beach-1.jpg" alt="Destinasi Lombok">
+                    <p>Gili Trawangan, Lombok</p>
+                </div>
+                <div class="media-item">
+                    <video controls>
+                        <source src="https://youtu.be/6IFpJu7FuSY?si=fkYZP0VRZqaBOQ3R" type="video/mp4">
+                        Browser Anda tidak mendukung tag video.
+                    </video>
+                    <p>Virtual Tour</p>
+                </div>
+                <div class="media-item">
+                    <audio controls>
+                        <source src="sample.mp3" type="audio/mpeg">
+                        Browser Anda tidak mendukung tag audio.
+                    </audio>
+                    <p>Suara Alam</p>
+                </div>
+            </div>
+        </section>
+        
+        <section id="contact" class="contact">
+            <h2>Hubungi Kami</h2>
+            <form>
+                <div class="form-group">
+                    <label for="name">Nama:</label>
+                    <input type="text" id="name" name="name" required>
+                </div>
+                <div class="form-group">
+                    <label for="email">Email:</label>
+                    <input type="email" id="email" name="email" required>
+                </div>
+                <div class="form-group">
+                    <label for="package">Paket Wisata:</label>
+                    <select id="package" name="package">
+                        <option value="bali">Bali</option>
+                        <option value="lombok">Lombok</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="message">Pesan:</label>
+                    <textarea id="message" name="message" rows="4" required></textarea>
+                </div>
+                <button type="submit">Kirim Pesan</button>
+            </form>
+
+            <div class="map-frame">
+                <h3>Lokasi Kantor Kami:</h3>
+                <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3960.923034714829!2d107.61810647499556!3d-6.897826667028228!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e68e639b207db4d%3A0x67ef13a9f84a9a6e!2sBandung%20City%20Hall!5e0!3m2!1sen!2sid!4v1620000000000!5m2!1sen!2sid" 
+                        width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer>
+        <p>&copy; 2024 Pedia Travel. All Rights Reserved.</p>
+        <div class="social-links">
+            <a href="#">Facebook</a> | 
+            <a href="#">Instagram</a> | 
+            <a href="#">Twitter</a>
+        </div>
+    </footer>
+</body>
+</html>
