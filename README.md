@@ -1,5 +1,5 @@
                                                                                          Hi, I'm teguhMF
-                                                                                I'm web developer junior
+                                                                                I'm frontend junior
                                                                       This is random coding for learning
                                                                       And Pratice
                                                                       
