@@ -12,7 +12,7 @@ void clear_input() {
     cin.ignore(numeric_limits<streamsize>::max(), '\n');
 }
 
-void showmenu() {
+void showMenu() {
     cout << "\n=== SISTEM BERKAS SEDERHANA ===\n";
     cout << "1. Buat file baru\n";
     cout << "2. Daftar file (di folder kerja)\n";
@@ -23,7 +23,7 @@ void showmenu() {
     cout << "Pilih (1-6): ";
 }
 
-void buatfile() {
+void createFile() {
     string filename;
     cout << "Masukkan nama file (contoh: data.txt): ";
     clear_input();
@@ -36,17 +36,13 @@ void buatfile() {
 
     if (fs::exists(filename)) {
         cout << "File sudah ada. Apakah ingin menimpa? (y/n): ";
-        char c;
-        cin >> c;
-        if (c != 'y' && c != 'Y') {
-            clear_input();
-            return;
-        }
+        char c; cin >> c;
+        if (c != 'y' && c != 'Y') return;
         clear_input();
     }
 
     cout << "Masukkan isi file (akhiri dengan .done):\n";
-    ofstream ofs(filename);
+    ofstream ofs(filename, ios::trunc);
     if (!ofs) {
         cout << "Gagal membuat file.\n";
         return;
@@ -62,41 +58,31 @@ void buatfile() {
     cout << "File '" << filename << "' berhasil disimpan.\n";
 }
 
-void listfile() {
+void listFiles() {
     cout << "\nDaftar file di folder kerja:\n";
     int count = 0;
     try {
         for (const auto& entry : fs::directory_iterator(fs::current_path())) {
             if (entry.is_regular_file()) {
                 cout << " - " << entry.path().filename().string() << '\n';
-                count++;
+                ++count;
             }
         }
     } catch (const fs::filesystem_error& e) {
         cout << "Error membaca folder: " << e.what() << '\n';
         return;
     }
-    
-    if (count == 0) {
-        cout << "Tidak ada file di folder kerja.\n";
-    } else {
-        cout << "Total: " << count << " file\n";
-    }
+    if (count == 0) cout << "(Tidak ada file di folder ini)\n";
 }
 
-void readfile() {
+void readFile() {
     string filename;
     cout << "Masukkan nama file yang akan dibaca: ";
     clear_input();
     getline(cin, filename);
 
-    if (filename.empty()) {
-        cout << "Nama file tidak boleh kosong.\n";
-        return;
-    }
-
     if (!fs::exists(filename)) {
-        cout << "File '" << filename << "' tidak ditemukan.\n";
+        cout << "File tidak ditemukan.\n";
         return;
     }
 
@@ -106,86 +92,56 @@ void readfile() {
         return;
     }
 
-    cout << "\n--- Isi file '" << filename << "' ---\n";
+    cout << "\n--- Isi file: " << filename << " ---\n";
     string line;
-    int line_number = 1;
     while (getline(ifs, line)) {
-        cout << line_number << ": " << line << '\n';
-        line_number++;
+        cout << line << '\n';
     }
     cout << "--- Akhir file ---\n";
     ifs.close();
 }
 
-void deletefile() {
+void deleteFile() {
     string filename;
     cout << "Masukkan nama file yang akan dihapus: ";
     clear_input();
     getline(cin, filename);
 
-    if (filename.empty()) {
-        cout << "Nama file tidak boleh kosong.\n";
-        return;
-    }
-
     if (!fs::exists(filename)) {
-        cout << "File '" << filename << "' tidak ditemukan.\n";
+        cout << "File tidak ditemukan.\n";
         return;
     }
 
-    cout << "Yakin ingin menghapus file '" << filename << "'? (y/n): ";
-    char c;
-    cin >> c;
-    clear_input();
-    
+    cout << "Yakin ingin menghapus '" << filename << "'? (y/n): ";
+    char c; cin >> c;
     if (c == 'y' || c == 'Y') {
         try {
-            if (fs::remove(filename)) {
-                cout << "File '" << filename << "' berhasil dihapus.\n";
-            } else {
-                cout << "Gagal menghapus file.\n";
-            }
+            fs::remove(filename);
+            cout << "File dihapus.\n";
         } catch (const fs::filesystem_error& e) {
             cout << "Gagal menghapus file: " << e.what() << '\n';
         }
     } else {
-        cout << "Penghapusan dibatalkan.\n";
+        cout << "Batal menghapus.\n";
     }
 }
 
-void renamefile() {
+void renameFile() {
     string oldname, newname;
     cout << "Masukkan nama file lama: ";
     clear_input();
     getline(cin, oldname);
 
-    if (oldname.empty()) {
-        cout << "Nama file lama tidak boleh kosong.\n";
-        return;
-    }
-
     if (!fs::exists(oldname)) {
-        cout << "File '" << oldname << "' tidak ditemukan.\n";
+        cout << "File tidak ditemukan.\n";
         return;
     }
 
     cout << "Masukkan nama file baru: ";
     getline(cin, newname);
-
     if (newname.empty()) {
-        cout << "Nama file baru tidak boleh kosong.\n";
+        cout << "Nama baru tidak boleh kosong.\n";
         return;
-    }
-
-    if (fs::exists(newname)) {
-        cout << "File '" << newname << "' sudah ada. Tetap lanjutkan? (y/n): ";
-        char c;
-        cin >> c;
-        if (c != 'y' && c != 'Y') {
-            clear_input();
-            return;
-        }
-        clear_input();
     }
 
     try {
@@ -197,42 +153,23 @@ void renamefile() {
 }
 
 int main() {
-    cout << "Selamat datang di Sistem Berkas Sederhana!\n";
-    
     while (true) {
-        showmenu();
+        showMenu();
         int choice;
-        
         if (!(cin >> choice)) {
-            cout << "Pilihan tidak valid. Masukkan angka 1-6.\n";
+            cout << "Input tidak valid. Masukkan angka 1-6.\n";
             clear_input();
             continue;
         }
-        
-        clear_input(); 
+
         switch (choice) {
-            case 1:
-                buatfile();
-                break;
-            case 2:
-                listfile();
-                break;
-            case 3:
-                readfile();
-                break;
-            case 4:
-                deletefile();
-                break;
-            case 5:
-                renamefile();
-                break;
-            case 6:
-                cout << "Terima kasih! Keluar dari program.\n";
-                return 0;
-            default:
-                cout << "Pilihan tidak valid. Masukkan angka 1-6.\n";
+            case 1: createFile(); break;
+            case 2: listFiles(); break;
+            case 3: readFile(); break;
+            case 4: deleteFile(); break;
+            case 5: renameFile(); break;
+            case 6: cout << "Keluar. Sampai jumpa!\n"; return 0;
+            default: cout << "Pilihan tidak dikenali.\n";
         }
     }
-    
-    return 0;
 }
